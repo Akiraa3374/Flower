@@ -1,0 +1,41 @@
+import matplotlib.pyplot as plt
+import numpy as np
+
+# Function to draw a single flower (circle)
+def draw_flower(ax, x, y, size, color):
+    # Create a circle to represent the flower
+    flower = plt.Circle((x, y), size, color=color, ec="black", lw=2)
+    ax.add_artist(flower)
+
+# Function to create the bouquet
+def create_bouquet():
+    fig, ax = plt.subplots(figsize=(8, 8))
+    
+    # Set the background color
+    ax.set_facecolor("white")
+    
+    # Define the number of flowers and their properties
+    flowers = [
+        {"x": 0, "y": 1, "size": 0.2, "color": "red"},
+        {"x": 1, "y": 0.5, "size": 0.3, "color": "yellow"},
+        {"x": -1, "y": 0.5, "size": 0.25, "color": "blue"},
+        {"x": 0.5, "y": -1, "size": 0.35, "color": "purple"},
+        {"x": -0.5, "y": -1, "size": 0.3, "color": "orange"},
+        {"x": 1.2, "y": -0.5, "size": 0.25, "color": "pink"},
+        {"x": -1.2, "y": -0.5, "size": 0.3, "color": "green"}
+    ]
+    
+    # Draw each flower
+    for flower in flowers:
+        draw_flower(ax, flower["x"], flower["y"], flower["size"], flower["color"])
+    
+    # Set limits and remove axes
+    ax.set_xlim(-2, 2)
+    ax.set_ylim(-2, 2)
+    ax.axis("off")
+    
+    # Show the bouquet image
+    plt.show()
+
+# Create and display the flower bouquet
+create_bouquet()
